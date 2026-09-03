@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Library</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <img src="/assets/book.svg" alt="logo">
+        <div>
+            <h4>The Library</h4>
+            <p>Discover your next favorite book</p>
+        </div>
+    </header>
+    <main>
+        <section class="title-search">
+            <div class="title-subtitle">
+                <h1>Discover Your Next Great Read</h1>
+                <p>Search millions of books, build your personal library, and never lose track of what to read next.</p>
+            </div>
+            <search>
+                <img src="/assets/search.svg" alt="search-icon">
+                <input type="search" placeholder="Search for books by title or author...">
+                <button>Search</button>
+            </search>
+        </section>
+        <section>
+            <section class="books-div">
+                <!--BOOKS ARE GOING TO BE RENDERED HERE-->
+                <div class="book-entry">
+                    <div class="book-cover-placeholder">No cover available</div>
+                    <!-- <img src="" alt=""> -->
+                    <div class="book-info">
+                        <span class="book-title">Title</span>
+                        <span class="book-author">Author</span>
+                        <span class="book-year">Year</span>
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </section>
+            <section class="favorites-div">
+                <h4>Favorites</h4>
+                <p><span>0</span> books saved</p>
+                <!--FAVORITED BOOKS ARE GONNA BE RENDERED HERE-->
+                <div>
+                    <img src="" alt="">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <img src="" alt="">
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="./script.js" async defer></script>
+</body>
+
+</html>
