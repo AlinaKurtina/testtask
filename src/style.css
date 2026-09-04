@@ -7,7 +7,7 @@
     --red: #ef4444;
     --brown: #383129;
     --black: #2a2622;
-    
+
     --title: #2b2622;
     --text: #7c736a;
     --border: #E7E2DA;
@@ -17,6 +17,7 @@
     --secondary: #eeebe4;
     --shadow: #c4b8a8;
     --favorite: #eaf0ed;
+    --placeholder: rgb(208, 211, 201);
 
     --font-primary: 'Playfair Display', serif;
     --font-secondary: 'Source Sans', sans-serif;
@@ -26,6 +27,10 @@ body {
     margin: 0px;
     padding: 0px;
     background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    min-height: 100vh;
 }
 
 header {
@@ -127,15 +132,16 @@ search img {
 
 .book-entry {
     height: 350px;
-    background-color: var(--card); 
+    background-color: var(--card);
     width: 200px;
     border-radius: 10px;
     box-shadow: 0px 0px 8px var(--shadow);
+    position: relative;
 }
 
 .book-cover-placeholder {
     height: 270px;
-    background-color: rgb(208, 211, 201);
+    background-color: var(--placeholder);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     display: flex;
@@ -165,8 +171,9 @@ search img {
 
 .book-year {
     color: var(--text);
-    font-size: xx-small;
+    font-size: x-small;
     margin-top: 0px;
+    opacity: 0.7;
 }
 
 .books-favorites {
@@ -204,6 +211,7 @@ search img {
 .icon-title {
     display: flex;
     padding: 20px;
+    padding-bottom: 0px;
     gap: 10px;
 }
 
@@ -214,4 +222,104 @@ search img {
     padding: 6px;
     border-radius: 8px;
     margin-top: 7px;
+}
+
+.fav-icon {
+    position: absolute;
+    top: 12px;
+    left: 160px;
+    background-color: var(--card);
+    padding: 7px;
+    border-radius: 50px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.fav-entry {
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    padding: 10px;
+    padding-top: 0px;
+    position: relative;
+    width: inherit;
+}
+
+.fav-entry hr {
+    background-color: var(--border);
+    height: 0.5px;
+    width: 90%;
+    border: none;
+}
+
+.fav-cover-placeholder {
+    width: 65px;
+    height: 100px;
+    background-color: var(--placeholder);
+    border-radius: 5px;
+}
+
+.no-hr {
+    display: flex;
+}
+
+.fav-cover-placeholder p {
+    font-family: var(--font-primary);
+    font-size: x-small;
+    text-align: center;
+    color: var(--card);
+    margin-top: 50%;
+}
+
+.fav-title {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: small;
+}
+
+.fav-author {
+    font-family: var(--font-secondary);
+    color: var(--text);
+    font-size: x-small;
+}
+
+.fav-year {
+    font-family: var(--font-secondary);
+    color: var(--text);
+    font-size: x-small;
+    opacity: 0.8;
+}
+
+.fav-info {
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.icon-fix {
+    top: 50px;
+    left: 200px;
+    overflow: visible;
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    height: 80px;
+    padding-top: 20px;
+    margin-top: auto;
+}
+
+footer span {
+    font-family: var(--font-secondary);
+    font-size: small;
+    color: var(--text);
+    margin-top: 10px;
+}
+
+footer span a {
+    color: var(--green);
+    text-decoration: none;
 }
