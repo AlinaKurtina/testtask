@@ -108,6 +108,12 @@ search input {
     padding-left: 35px;
 }
 
+input[type="search"]:focus {
+  border-color: var(--brown);
+  outline: none; 
+  box-shadow: 0 0 5px var(--green); 
+}
+
 search button {
     background-color: var(--green);
     border: none;
@@ -117,6 +123,11 @@ search button {
     padding: 12px 20px;
     border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+search button:hover {
+    background-color: var(--brown);
 }
 
 search img {
@@ -127,16 +138,40 @@ search img {
 
 .books-div {
     margin-top: 50px;
-    margin-left: 40px;
+    /* margin-left: 40px; */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    min-width: 800px;
 }
 
 .book-entry {
-    height: 350px;
+    height: 360px;
     background-color: var(--card);
-    width: 200px;
+    width: 180px;
     border-radius: 10px;
     box-shadow: 0px 0px 8px var(--shadow);
     position: relative;
+    overflow: hidden;
+}
+
+.book-entry::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(to bottom, transparent, var(--card));
+}
+
+.book-cover {
+    height: 270px;
+    width: 180px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .book-cover-placeholder {
@@ -156,12 +191,12 @@ search img {
     flex-direction: column;
     font-family: var(--font-secondary);
     padding: 10px;
-    gap: 8px;
+    gap: 3px;
 }
 
 .book-title {
     font-weight: 600;
-    font-size: medium;
+    font-size: small;
 }
 
 .book-author {
@@ -178,7 +213,9 @@ search img {
 
 .books-favorites {
     display: flex;
-    gap: 20px;
+    max-width: 1400px;
+    justify-self: center;
+    gap: 30px;
 }
 
 .favorites-div {
@@ -188,6 +225,8 @@ search img {
     border-radius: 10px;
     margin-top: 50px;
     border: 1px solid var(--border);
+    margin-left: auto;
+    padding-bottom: 20px;
 }
 
 .favorites-div h4 {
@@ -227,7 +266,7 @@ search img {
 .fav-icon {
     position: absolute;
     top: 12px;
-    left: 160px;
+    left: 140px;
     background-color: var(--card);
     padding: 7px;
     border-radius: 50px;
@@ -314,7 +353,7 @@ footer {
 
 footer span {
     font-family: var(--font-secondary);
-    font-size: small;
+    font-size: x-small;
     color: var(--text);
     margin-top: 10px;
 }
@@ -322,4 +361,27 @@ footer span {
 footer span a {
     color: var(--green);
     text-decoration: none;
+}
+
+.empty {
+    color: var(--green);
+    font-family: var(--font-secondary);
+    font-style: italic;
+    font-size: x-small;
+    max-width: fit-content;
+    margin-top: 10px;
+    margin-left: 40px;
+    text-align: center;
+}
+
+.search-empty {
+    display: flex;
+    flex-direction: column;
+}
+
+.empty-favs {
+    font-family: var(--font-primary);
+    font-size: x-small;
+    padding: 20px;
+    color: var(--brown);
 }
