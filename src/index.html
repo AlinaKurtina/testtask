@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="/assets/book.svg" type="image/x-icon">
 </head>
 
 <body>
@@ -25,24 +26,31 @@
                 <p>Search millions of books, build your personal library, and never lose track of what to read next.</p>
             </div>
             <search>
-                <img src="/assets/search.svg" alt="search-icon">
-                <input type="search" placeholder="Search for books by title or author...">
-                <button>Search</button>
+                <div class="search-empty">
+                    <img src="/assets/search.svg" alt="search-icon">
+                    <div>
+                    <input type="search" placeholder="Search for books by title or author..." id="input">
+                    <button id="startSearch">Search</button>
+                    </div>
+                    <span class="empty">Start looking for books by writing your query in the search bar above and
+                        clicking
+                        "Search".</span>
+                </div>
             </search>
         </section>
         <section class="books-favorites">
             <section class="books-div">
                 <!--BOOKS ARE GOING TO BE RENDERED HERE-->
-                <div class="book-entry">
+                <!-- <div class="book-entry">
                     <div class="book-cover-placeholder">No cover available</div>
-                    <!-- <img src="" alt=""> -->
+                    <img src="" alt="">
                     <div class="book-info">
                         <span class="book-title">Title</span>
                         <span class="book-author">Author</span>
                         <span class="book-year">Year</span>
-                        <img src="/assets/heart.svg" alt="" class="fav-icon">
+                        <img src="/assets/heart.svg" alt="fav-icon" class="fav-icon">
                     </div>
-                </div>
+                </div> -->
             </section>
             <section class="favorites-div">
                 <div class="icon-title">
@@ -53,21 +61,22 @@
                     </div>
                 </div>
                 <!--FAVORITED BOOKS ARE GONNA BE RENDERED HERE-->
-                <div class="fav-entry">
+                <span class="empty-favs">You haven't added any favorite books yet.</span>
+                <!-- <div class="fav-entry">
                     <hr>
                     <div class="no-hr">
                         <div class="fav-cover-placeholder">
                             <p>No cover available</p>
                         </div>
-                        <!-- <img src="" alt=""> -->
+                        <img src="" alt="">
                         <div class="fav-info">
                             <span class="fav-title">Title</span>
                             <span class="fav-author">Author</span>
                             <span class="fav-year">Year</span>
-                            <img src="/assets/heart.svg" alt="" class="fav-icon icon-fix">
+                            <img src="/assets/heart.svg" alt="fav-icon" class="fav-icon icon-fix">
                         </div>
                     </div>
-                </div>
+                </div> -->
             </section>
         </section>
     </main>
