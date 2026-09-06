@@ -23,7 +23,10 @@ function renderBooks(books) {
         emptySpan.remove();
     }
 
-    booksContainer.innerHTML = books.map((book, bookIndex) => `
+    booksContainer.innerHTML = books.map((book, bookIndex) => {
+        const faveBook = faved.find(fav => fav.key === book.key);
+        const isFaved = faved.includes(faveBook);
+        return `
         <div class="book-entry" id=${bookIndex} key=${book.key}>
                 ${book.cover_i ?
             `<img src="https://covers.openlibrary.org/b/id/${book.cover_i}.jpg" class="book-cover" alt="">`
@@ -33,24 +36,14 @@ function renderBooks(books) {
                     <span class="book-title">${book.title || 'Unknown Title'}</span>
                     <span class="book-author">${book.author_name || 'Unkbown Author'}</span>
                     <span class="book-year">${book.first_publish_year || 'Unknown Year'}</span>
-                    <svg class="fav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="${faved.includes(book) ? 'red' : 'none'}" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="fav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15" fill="${isFaved ? 'red' : 'none'}" stroke="${isFaved ? 'red' : 'black'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78l1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
                 </div>
         </div>
-    `).join("");
+    `
+}).join("");
 }
-
-document.querySelector("#startSearch").addEventListener('click', () => {
-    const searchQuery = document.querySelector("#input").value;
-
-    if (searchQuery === '') {
-        return;
-    } else {
-        getBooks(searchQuery);
-
-    }
-})
 
 // add books to favorites
 
@@ -59,7 +52,8 @@ function setFavorite(e) {
     const faved = JSON.parse(localStorage.getItem('favorites')); // make a global
     const bookArray = JSON.parse(localStorage.getItem('resultsArray')); // globalify
     const book = bookArray.find(book => book.key === key);
-    const isFaved = faved.includes(book);
+    const faveBook = faved.find(fav => fav.key === key);
+    const isFaved = faved.includes(faveBook);
 
     const favedBook = {
         key: book.key,
@@ -77,10 +71,12 @@ function setFavorite(e) {
         faved.push(favedBook);
         localStorage.setItem('favorites', JSON.stringify(faved));
     } else {
-        return;
+        const filtered = faved.filter(fav => fav.key !== faveBook.key);
+        localStorage.setItem('favorites', JSON.stringify(filtered));
     }
 
     renderFavorite();
+    renderBooks(bookArray);
 
 }
 
@@ -88,10 +84,11 @@ function unsetFavorite(e) {
     const key = e.target.closest(".fav-entry").getAttribute('key');
     const faved = JSON.parse(localStorage.getItem('favorites'));
     const filtered = faved.filter(fav => fav.key !== key);
-    console.log(filtered);
+    const books = JSON.parse(localStorage.getItem('resultsArray'));
     localStorage.setItem('favorites', JSON.stringify(filtered));
 
     renderFavorite();
+    renderBooks(books);
 }
 
 
@@ -99,12 +96,7 @@ function unsetFavorite(e) {
 function renderFavorite() {
     const favDiv = document.querySelector('.favs-list');
     const favsArr = JSON.parse(localStorage.getItem('favorites'));
-    const emptyFavSpan = document.querySelector('.empty-favs');
     const favsCount = document.querySelector('#count');
-
-    // if (emptyFavSpan) {
-    //     emptyFavSpan.remove();
-    // }
 
     favDiv.innerHTML = favsArr.map(fav => `
         <div class="fav-entry" key=${fav.key}>
@@ -132,7 +124,19 @@ function renderFavorite() {
     }
 
     favsCount.textContent = favsArr.length;
+
 }
+
+document.querySelector("#startSearch").addEventListener('click', () => {
+    const searchQuery = document.querySelector("#input").value;
+
+    if (searchQuery === '') {
+        return;
+    } else {
+        getBooks(searchQuery);
+
+    }
+})
 
 document.addEventListener('click', (e) => {
     const favIcon = e.target.closest('.fav-icon');
