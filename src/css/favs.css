@@ -1,0 +1,161 @@
+.favorites-div {
+    height: fit-content;
+    background-color: var(--card);
+    width: 250px;
+    border-radius: 10px;
+    margin-top: 50px;
+    border: 1px solid var(--border);
+    padding-bottom: 20px;
+}
+
+.favorites-div h4 {
+    font-family: var(--font-primary);
+    color: var(--title);
+    margin: 0px;
+}
+
+.favorites-div p {
+    margin-top: 5px;
+    font-family: var(--font-secondary);
+    font-size: x-small;
+    color: var(--text);
+}
+
+.favs-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-title {
+    display: flex;
+    padding: 20px;
+    padding-bottom: 0px;
+    gap: 10px;
+}
+
+.favorites-icon {
+    width: 20px;
+    background-color: var(--favorite);
+    height: 20px;
+    padding: 6px;
+    border-radius: 8px;
+    margin-top: 7px;
+}
+
+.fav-icon {
+    position: absolute;
+    top: 12px;
+    left: 140px;
+    background-color: var(--card);
+    padding: 7px;
+    border-radius: 50px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.fav-entry {
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    padding: 10px;
+    padding-top: 0px;
+    position: relative;
+    width: inherit;
+    overflow: hidden;
+}
+
+.fav-entry::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(to bottom, transparent, var(--card));
+}
+
+.fav-entry hr {
+    background-color: var(--border);
+    height: 0.5px;
+    width: 90%;
+    border: none;
+}
+
+.fav-cover-placeholder {
+    width: 65px;
+    height: 100px;
+    background-color: var(--placeholder);
+    border-radius: 5px;
+}
+
+.no-hr {
+    display: flex;
+}
+
+.fav-cover-placeholder p {
+    font-family: var(--font-primary);
+    font-size: x-small;
+    text-align: center;
+    color: var(--card);
+    margin-top: 50%;
+}
+
+.fav-cover {
+    width: 65px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.fav-title {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: small;
+}
+
+.fav-author {
+    font-family: var(--font-secondary);
+    color: var(--text);
+    font-size: x-small;
+}
+
+.fav-year {
+    font-family: var(--font-secondary);
+    color: var(--text);
+    font-size: x-small;
+    opacity: 0.8;
+}
+
+.fav-info {
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    max-width: 120px;
+}
+
+.favs-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-fix {
+    position: absolute;
+    background-color: var(--card);
+    padding: 7px;
+    border-radius: 50px;
+    cursor: pointer;
+    opacity: 0.7;
+    top: 50px;
+    left: 200px;
+    overflow: visible;
+    width: 15px;
+}
+
+.empty-favs {
+    font-family: var(--font-primary);
+    font-size: x-small;
+    padding: 20px;
+    color: var(--brown);
+}
