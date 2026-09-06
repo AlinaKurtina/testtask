@@ -69,6 +69,10 @@ header div {
     flex-direction: column;
 }
 
+main {
+    position: relative;
+}
+
 .title-search {
     display: flex;
     flex-direction: column;
@@ -414,4 +418,18 @@ footer span a {
     font-size: x-small;
     padding: 20px;
     color: var(--brown);
+}
+
+.loading {
+    position: absolute;
+    margin-left: 650px;
+    margin-top: -100px;
+}
+
+.loading-animation {
+    width: 200px;
+}
+
+.hidden {
+    display: none;
 }

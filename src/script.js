@@ -1,26 +1,73 @@
 // globals (UNGLOBAL LATER)
+let fetchStatus;
 
+// const favs
+// const searchResults
 
 // fetch and save da books
 
 async function getBooks(q) {
-    const query = new URLSearchParams({ q: q });
-    const params = query.toString();
-    const fetchBooks = await fetch(`https://openlibrary.org/search.json?${params}`); // make url a var later
-    const books = await fetchBooks.json();
-    const booksArray = books.docs;
+    let booksArray;
+    document.querySelector('.loading').classList.remove('hidden');
 
-    localStorage.setItem('resultsArray', JSON.stringify(booksArray));
+    try {
+        const query = new URLSearchParams({ q: q });
+        const params = query.toString();
+        const fetchBooks = await fetch(`https://openlibrary.org/search.json?${params}`); // make url a var later
+        // loading = true;
+        const books = await fetchBooks.json();
+        // loading = false;
+
+        if (!fetchBooks.ok) {
+            fetchStatus = 'error';
+        } else {
+            booksArray = books.docs || [];
+            console.log(booksArray);
+
+            if (booksArray.length === 0) {
+                fetchStatus = 'no-results';
+            } else {
+                fetchStatus = 'fine';
+                localStorage.setItem('resultsArray', JSON.stringify(booksArray));
+            }
+        }
+
+    } catch (err) {
+        console.log(err);
+        fetchStatus = 'error';
+    } finally {
+        document.querySelector('.loading').classList.add('hidden');
+    }
+
     renderBooks(booksArray);
+
 }
 
 function renderBooks(books) {
     const booksContainer = document.querySelector(".books-div");
+    const spanContainer = document.querySelector(".books-favorites");
     const emptySpan = document.querySelector(".empty");
     const faved = JSON.parse(localStorage.getItem('favorites'));
 
+    const statusSpan = document.createElement('span');
+    statusSpan.classList.add('empty');
+
     if (emptySpan) {
         emptySpan.remove();
+    }
+
+    switch (fetchStatus) {
+        case 'error':
+            statusSpan.textContent = 'Network problems occured. Please, retry.';
+            spanContainer.prepend(statusSpan);
+            break;
+
+        case 'no-results':
+            statusSpan.textContent = 'No results found for your query.';
+            spanContainer.prepend(statusSpan);
+            break;
+        default:
+            break;
     }
 
     booksContainer.innerHTML = books.map((book, bookIndex) => {
@@ -29,9 +76,9 @@ function renderBooks(books) {
         return `
         <div class="book-entry" id=${bookIndex} key=${book.key}>
                 ${book.cover_i ?
-            `<img src="https://covers.openlibrary.org/b/id/${book.cover_i}.jpg" class="book-cover" alt="">`
-            :
-            `<div class="book-cover-placeholder">No cover available</div>`}
+                `<img src="https://covers.openlibrary.org/b/id/${book.cover_i}.jpg" class="book-cover" alt="">`
+                :
+                `<div class="book-cover-placeholder">No cover available</div>`}
                 <div class="book-info">
                     <span class="book-title">${book.title || 'Unknown Title'}</span>
                     <span class="book-author">${book.author_name || 'Unkbown Author'}</span>
@@ -42,7 +89,7 @@ function renderBooks(books) {
                 </div>
         </div>
     `
-}).join("");
+    }).join("");
 }
 
 // add books to favorites
