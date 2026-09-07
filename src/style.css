@@ -3,7 +3,6 @@
 @import url('/src/css/favs.css');
 @import url('/src/css/header.css');
 @import url('/src/css/search.css');
-@import url('/src/css/darktheme.css');
 
 :root {
     --white: #ffffff;
@@ -24,18 +23,21 @@
     --favorite: #eaf0ed;
     --placeholder: rgb(208, 211, 201);
 
-    --dark-background: #181614;   
-    --dark-card: #221f1b;         
-    --dark-secondary: #2d2924;    
-    --dark-border: #38322c;
-    --dark-shadow: rgba(0, 0, 0, 0.5); 
-    --dark-placeholder: #575047;
-    --dark-title: #e7e2da;
-    --dark-text: #a89f95;  
-    --dark-favorite: #1a3227;
-
     --font-primary: 'Playfair Display', serif;
     --font-secondary: 'Source Sans', sans-serif;
+}
+
+[data-mode="dark"] {
+    --background: #181614;
+    --card: #221f1b;
+    --secondary: #2d2924;
+    --border: #38322c;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --placeholder: #575047;
+    --title: #e7e2da;
+    --text: #a89f95;
+    --favorite: #1a3227;
+    --brown: #a89f95;
 }
 
 body {
@@ -46,9 +48,7 @@ body {
     flex-direction: column;
     gap: 50px;
     min-height: 100vh;
-}
-
-main {
+    transition: background-color 0.3s, color 0.3s;
     position: relative;
 }
 
@@ -74,14 +74,87 @@ footer span a {
 
 .loading {
     position: absolute;
-    margin-left: 650px;
-    margin-top: -100px;
+    top: 300px;
+    left: 600px;
+    z-index: 9999;
 }
 
 .loading-animation {
-    width: 200px;
+    width: 300px;
 }
 
 .hidden {
     display: none;
+}
+
+.loading-cursor {
+    cursor: wait;
+}
+
+@media screen and (max-width: 767px) {
+
+    .books-div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    search input {
+        width: 500px;
+        font-size: medium;
+        padding-left: 35px;
+        height: 50px;
+    }
+
+    search button {
+        font-size: medium;
+        padding: 15px 20px;
+    }
+
+    search img {
+        position: absolute;
+        padding: 13px;
+        width: 18px;
+    }
+
+    header h4 {
+        font-size: xx-large;
+    }
+
+    header img {
+        padding: 10px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .mode-change {
+        width: 35px;
+        height: 35px;
+    }
+
+    .title-subtitle h1 {
+        font-size: xx-large;
+    }
+
+    .favorites-div h4 {
+        font-size: larger;
+    }
+
+    .fav-author, .fav-year, .favorites-div p, .book-year, .book-author {
+        font-size: small;
+    }
+
+
+    footer span, .title-subtitle p, .book-title, .fav-title, header p {
+        font-size: medium;
+    }
+
+    .loading {
+        top: 400px;
+        left: 100px;
+    }
+
+    .loading-animation {
+        width: 500px;
+    }
+
+
 }

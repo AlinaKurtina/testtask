@@ -5,6 +5,7 @@ export async function getBooks(q) {
 
     let booksArray;
     document.querySelector('.loading').classList.remove('hidden');
+    document.querySelector('body').classList.add('loading-cursor');
 
     try {
         const query = new URLSearchParams({ q: q });
@@ -31,6 +32,7 @@ export async function getBooks(q) {
         globals.fetchStatus = 'error';
     } finally {
         document.querySelector('.loading').classList.add('hidden');
+        document.querySelector('body').classList.remove('loading-cursor');
     }
 
     renderBooks(booksArray);
