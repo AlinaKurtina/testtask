@@ -82,3 +82,16 @@ export function renderFavorite() {
     favsCount.textContent = favsArr.length;
 
 }
+
+export function changeMode() {
+    const mode = document.documentElement.getAttribute('data-mode') || null;
+
+    if (mode === 'dark') {
+        document.documentElement.removeAttribute('data-mode');
+        localStorage.setItem('mode', 'light');
+    } else {
+        document.documentElement.setAttribute('data-mode', 'dark');
+        localStorage.setItem('mode', 'dark');
+    }
+
+}

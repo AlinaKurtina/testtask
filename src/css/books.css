@@ -57,6 +57,7 @@
 }
 
 .book-title {
+    color: var(--title);
     font-weight: 600;
     font-size: small;
 }
@@ -85,7 +86,8 @@
     font-family: var(--font-secondary);
     font-style: italic;
     font-size: small;
-    width: 500px;
+    max-width: 500px;
+    width: 100%;
     margin-top: 50px;
     margin-left: 40px;
 }
