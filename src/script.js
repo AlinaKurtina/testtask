@@ -3,6 +3,8 @@ import { getBooks } from "./js/data.js";
 import { renderFavorite, renderBooks, changeMode } from "./js/ui.js";
 import { globals } from "./js/globals.js";
 
+import './style.css';
+
 document.addEventListener('click', (e) => {
     const favIcon = e.target.closest('.fav-icon');
     const favedIcon = e.target.closest('.icon-fix');
@@ -28,6 +30,7 @@ document.addEventListener('click', (e) => {
     }
 
     if (toggleMode) {
+        console.log('IM SUPPOSED TO WORK')
         changeMode();
     }
 })
@@ -47,8 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderFavorite();
 })
 
-// debounce
-document.querySelector("#input").addEventListener('change', (e) => {
+document.querySelector("#input").addEventListener('keyup', (e) => {
 
     clearTimeout(globals.timer);
     globals.timer = setTimeout(() => {
@@ -58,6 +60,5 @@ document.querySelector("#input").addEventListener('change', (e) => {
         } else {
             getBooks(searchQuery);
         }
-    }, 100)
-}
-)
+    }, 1000)
+})

@@ -4,7 +4,7 @@ export function renderBooks(books) {
     const booksContainer = document.querySelector(".books-div");
     const spanContainer = document.querySelector(".books-favorites");
     const emptySpan = document.querySelector(".empty");
-    const faved = JSON.parse(localStorage.getItem('favorites'));
+    const faved = JSON.parse(localStorage.getItem('favorites')) || [];
 
     const statusSpan = document.createElement('span');
     statusSpan.classList.add('empty');
@@ -15,11 +15,13 @@ export function renderBooks(books) {
 
     switch (globals.fetchStatus) {
         case 'error':
+            booksContainer.innerHTML = '';
             statusSpan.textContent = 'Network problems occured. Please, retry.';
             spanContainer.prepend(statusSpan);
             break;
 
         case 'no-results':
+            booksContainer.innerHTML = '';
             statusSpan.textContent = 'No results found for your query.';
             spanContainer.prepend(statusSpan);
             break;
@@ -51,7 +53,7 @@ export function renderBooks(books) {
 
 export function renderFavorite() {
     const favDiv = document.querySelector('.favs-list');
-    const favsArr = JSON.parse(localStorage.getItem('favorites'));
+    const favsArr = JSON.parse(localStorage.getItem('favorites')) || [];
     const favsCount = document.querySelector('#count');
 
     favDiv.innerHTML = favsArr.map(fav => `
