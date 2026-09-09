@@ -91,6 +91,14 @@ footer span a {
     cursor: wait;
 }
 
+@media screen and (max-width: 1250px) {
+
+    .books-div {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
 @media screen and (max-width: 767px) {
 
     .books-div {
