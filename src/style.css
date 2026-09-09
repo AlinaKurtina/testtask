@@ -94,7 +94,14 @@ footer span a {
 @media screen and (max-width: 1250px) {
 
     .books-div {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .loading {
+        position: absolute;
+        top: 300px;
+        left: 350px;
+        z-index: 9999;
     }
 
 }
@@ -146,12 +153,20 @@ footer span a {
         font-size: larger;
     }
 
-    .fav-author, .fav-year, .favorites-div p, .book-year, .book-author {
+    .fav-author,
+    .fav-year,
+    .favorites-div p,
+    .book-year,
+    .book-author {
         font-size: small;
     }
 
 
-    footer span, .title-subtitle p, .book-title, .fav-title, header p {
+    footer span,
+    .title-subtitle p,
+    .book-title,
+    .fav-title,
+    header p {
         font-size: medium;
     }
 
@@ -161,7 +176,136 @@ footer span a {
     }
 
     .loading-animation {
-        width: 500px;
+        width: 200px;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) {
+
+    search input {
+        padding: 5px;
+        width: 250px;
+        font-size: medium;
+        padding-left: 35px;
+    }
+
+    .mode-change {
+        margin-right: 15px;
+    }
+
+    .logo {
+        margin-left: 35px;
+    }
+
+    header h4 {
+        font-size: large;
+    }
+
+    header p {
+        font-size: small;
+    }
+
+    .book-entry {
+        height: 160px;
+        width: 90px;
+    }
+
+    .book-entry::after,
+    .fav-entry::after {
+        height: 10px;
+    }
+
+    .book-cover {
+        height: 120px;
+        width: 90px;
+    }
+
+    .book-cover-placeholder {
+        height: 120px;
+    }
+
+    .book-info {
+        padding: 2px;
+    }
+
+    .book-author,
+    .book-year,
+    .fav-author,
+    .fav-year {
+        font-size: xx-small;
+    }
+
+    .favorites-div {
+        width: 150px;
+    }
+
+    .favorites-div h4 {
+        font-size: small;
+    }
+
+    .favorites-div p,
+    .fav-title,
+    .book-title {
+        font-size: x-small;
+    }
+
+    .fav-entry {
+        height: 100px;
+    }
+
+    .fav-entry hr {
+        background-color: var(--border);
+        height: 0.5px;
+        width: 90%;
+        border: none;
+    }
+
+    .fav-cover-placeholder,
+    .fav-cover {
+        width: 60px;
+        height: 90px;
+    }
+
+    .fav-info {
+        display: flex;
+        gap: 2px;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10px;
+        max-width: 120px;
+    }
+
+    .icon-fix {
+        top: 50px;
+        left: 110px;
+    }
+
+    .fav-icon {
+        top: 10px;
+        left: 55px;
+    }
+
+    .title-subtitle h1 {
+        font-size: larger;
+    }
+
+    .title-subtitle p {
+        font-size: small;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    .loading {
+        position: absolute;
+        top: 300px;
+        left: 150px;
+        z-index: 9999;
+    }
+
+    .loading-animation {
+        width: 150px;
     }
 
 
