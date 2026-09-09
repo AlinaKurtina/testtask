@@ -77,6 +77,8 @@ footer span a {
     top: 300px;
     left: 600px;
     z-index: 9999;
+    background-color: rgb(from var(--favorite) r g b / 0.4);
+    border-radius: 30px;
 }
 
 .loading-animation {
@@ -135,14 +137,18 @@ footer span a {
     }
 
     header img {
+        padding: 8px;
+        width: 25px;
+        height: 25px;
+    }
+
+    header {
         padding: 10px;
-        width: 30px;
-        height: 30px;
     }
 
     .mode-change {
-        width: 35px;
-        height: 35px;
+        width: 25px;
+        height: 25px;
     }
 
     .title-subtitle h1 {
@@ -179,7 +185,6 @@ footer span a {
         width: 200px;
     }
 
-
 }
 
 @media screen and (max-width: 480px) {
@@ -196,7 +201,7 @@ footer span a {
     }
 
     .logo {
-        margin-left: 35px;
+        margin-left: 20px;
     }
 
     header h4 {
@@ -208,8 +213,8 @@ footer span a {
     }
 
     .book-entry {
-        height: 160px;
-        width: 90px;
+        height: 180px;
+        width: 100px;
     }
 
     .book-entry::after,
@@ -218,12 +223,12 @@ footer span a {
     }
 
     .book-cover {
-        height: 120px;
-        width: 90px;
+        height: 130px;
+        width: 100px;
     }
 
     .book-cover-placeholder {
-        height: 120px;
+        height: 130px;
     }
 
     .book-info {
@@ -299,8 +304,7 @@ footer span a {
 
     .loading {
         position: absolute;
-        top: 300px;
-        left: 150px;
+        left: 35%;
         z-index: 9999;
     }
 
@@ -308,5 +312,9 @@ footer span a {
         width: 150px;
     }
 
+    .favorites-icon {
+        width: 15px;
+        height: 15px;
+    }
 
 }
